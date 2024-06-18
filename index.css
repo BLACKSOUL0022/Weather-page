@@ -1,0 +1,101 @@
+body {                
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(#D2F7FF, #00CCFF);
+    color: #fff;
+    overflow: hidden;
+}
+    /* empty for now .container {} */
+
+    .content {                                  /* Temp, weather, mountains */                           
+        background-color: rgba(3, 3, 3, 0.3);
+        border-radius: 20px;
+        height: 600px;
+        margin-inline: auto;
+        margin-top: 150px;
+    }
+
+    #weather {
+        height: 40%;
+    }
+    #night_mode {
+        width: 80px;
+        background-color: #000;
+        margin-inline: auto;
+    }
+        .temperature {
+            font-size: 60px;
+            padding-top: 30px;
+            outline: 1px #fff solid;
+            text-align: center;
+            height: 50%;        
+            margin-block: 0px !important;
+        }
+        .day_description {
+            height: 50%;
+            font-size: 30px;
+            outline: 1px #fff solid;
+            text-align: center;
+        }
+
+    .drawing {
+        outline: 5px solid #500;
+        padding-left: 35%;
+        height: 60%;
+        box-sizing: border-box;
+        width: 100%;
+        position: relative;
+        margin-bottom: 0px;            
+        }
+
+        .SVGS {
+            position: absolute;
+            outline: 2px solid #000;
+            margin: 0px;
+            height: 60%;
+            width: 100%;      
+            z-index: 300;      
+            bottom: 0%;
+            right: 0;
+
+        }
+        .weather-icon {
+            margin-left: 120px;
+            outline: 3px solid #00CCFF;
+           /*  margin-top: 250px;    Detras de montañas        .mountain1 {} */
+        }      
+        svg {
+            padding-top: 65px;
+            padding-left: 35%;
+        }
+        .window {
+            width: 4px;
+            height: 4px;
+            fill: rgb(101, 136, 131);
+        }
+        .window:hover {
+            background-color: #ffd755;
+            box-shadow: 0px 0px 20px;
+            filter: brightness(3);
+        }
+
+    .content2 {
+        justify-content: space-between;
+        margin-inline: auto;
+        height: auto;
+        
+    }
+        .page_data {
+            background-color: rgba(3, 3, 3, 0.3);
+            border-radius: 20px;
+            height: 80px;
+            margin-block: 10px;
+
+        }
+        .social {
+            border-radius: 20px;
+            background-color: rgba(3, 3, 3, 0.3);
+            height: 80px;
+            margin-block: 10px;
+        }
