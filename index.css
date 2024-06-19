@@ -1,15 +1,59 @@
+:root {
+    --gradient: linear-gradient(
+        180deg,
+        #00050A,
+        #000A14,
+        #00101E,
+        #000C2E,
+        #001337,
+        #001A41,
+        #00214A,
+        #002854,
+        #002F5E,
+        #003668,
+        #003D72,
+        #00447C,
+        #004B86,
+        #005290,
+        #00599A,
+        #0060A4,
+        #0067AE,
+        #006DB2,
+        #0077C4,
+        #0081D6,
+        #008BE8,
+        #0094FA,
+        #009CFF,
+        #10A3FF,
+        #18AAFF,
+        #00CCFF
+    );
+}
+
 body {                
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(#D2F7FF, #00CCFF);
+    background-image: var(--gradient); /*linear-gradient(#D2F7FF, #00CCFF)*/
     color: #fff;
+    background-size: 1000% 1000%;
+    background-position: bottom;
+    animation: bg-animation 10s infinite alternate;
     overflow: hidden;
+    
 }
-    /* empty for now .container {} */
+@keyframes bg-animation {
+    0% {
+        background-position: bottom;
+    }
+    100% {
+        background-position: top;
+    }
+}
 
     .content {                                  /* Temp, weather, mountains */                           
         background-color: rgba(3, 3, 3, 0.3);
+        
         border-radius: 20px;
         height: 600px;
         margin-inline: auto;
@@ -21,7 +65,7 @@ body {
     }
     #night_mode {
         width: 80px;
-        background-color: #000;
+        background-color: #fff;
         margin-inline: auto;
     }
         .temperature {
@@ -47,7 +91,7 @@ body {
         width: 100%;
         position: relative;
         margin-bottom: 0px;            
-        }
+    }
 
         .SVGS {
             position: absolute;
@@ -55,7 +99,7 @@ body {
             margin: 0px;
             height: 60%;
             width: 100%;      
-            z-index: 300;      
+            filter: blur(3px);
             bottom: 0%;
             right: 0;
 
@@ -73,11 +117,15 @@ body {
             width: 4px;
             height: 4px;
             fill: rgb(101, 136, 131);
+            transition: fill 2s ease-in-out;
         }
-        .window:hover {
-            background-color: #ffd755;
-            box-shadow: 0px 0px 20px;
-            filter: brightness(3);
+        .building {
+            transition: fill 5s ease;
+        }
+
+        .mountain1 {
+            transition: fill 5s ease;
+            
         }
 
     .content2 {
