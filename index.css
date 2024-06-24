@@ -18,7 +18,7 @@ body {  /* 1 */
     color: #fff;
     background-size: 100% 800%;
     background-position: 50% 100%; /* horizontal, vertical*/
-    overflow: hidden;
+
 }
     .content { /* 2 */                            /* Temp, weather, mountains */                           
         height: 600px;
@@ -94,6 +94,9 @@ body {  /* 1 */
                 
             }
 /*****************/
+    body {
+        height: 92vh;
+    }
     .content2 {  /* 2 */
         justify-content: space-between;
         margin-inline: auto;
@@ -136,7 +139,8 @@ body {  /* 1 */
 @media (max-width: 1440px) and (orientation: portrait) {
     
     .container {
-        height: 82vh;
+        height: 82%;
+        outline: 1px solid #fff;
         display: block;
         position: relative;
         
