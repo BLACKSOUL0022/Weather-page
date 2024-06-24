@@ -130,6 +130,71 @@ body {  /* 1 */
             border-radius: 5px;
         }
         .social_icon:hover {  /* 3 */
-            background-color: rgba(220, 220, 220, 1);
+            outline: 1px solid rgba(220, 220, 220, 1);
         }
         
+@media (max-width: 1440px) and (orientation: portrait) {
+    
+    .container {
+        height: 85vh;
+        display: block;
+        outline: 5px solid #fff;
+        position: relative;
+        
+    }
+    
+    .temperature {  /* 4 */
+        font-size: 150px;
+        padding-top: 30px;
+        text-align: center;
+        height: 250px;        
+        margin-block: 0px !important;
+    }
+    .day_description {  /* 4 */
+        height: 100px;
+        outline: 1px #fff solid;
+        font-size: 40px;
+        text-align: center;
+        margin-top: 0px;
+    }
+    .content { /* 2 */                            /* Temp, weather, mountains */                           
+        min-height: 600px;
+        height: 80%;
+        background-color: rgba(3, 3, 3, 0.3);
+        border-radius: 20px;
+        margin-inline: auto;
+        margin-top: 150px;
+    }
+    .drawing { /* 3 */
+        padding-left: 35%;
+        height: 60%;
+        box-sizing: border-box;
+        width: 100%;
+        position: relative;
+        margin-bottom: 0px;            
+    }
+
+        .SVGS {  /* 4 */
+            position: absolute;
+            margin: 0px;
+            height: 200px;
+            width: 100%;      
+            filter: blur(2px);
+            bottom: 0%;
+            right: 0;
+
+        }
+    
+    .content2 {  /* 2 */
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        justify-content: space-between;
+        margin-inline: auto;
+        height: auto;
+        outline: 1px solid #18AAFF;
+    }
+
+
+
+}
