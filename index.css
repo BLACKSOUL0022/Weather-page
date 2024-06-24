@@ -140,7 +140,6 @@ body {  /* 1 */
     
     .container {
         height: 82%;
-        outline: 1px solid #fff;
         display: block;
         position: relative;
         
