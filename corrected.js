@@ -1,138 +1,124 @@
-const apiKey = 'a2e0c89d04591e14058d6d687c73bf5b'; // clave API
-const lat = 32.525; // Latitud de Tijuana
-const lon = -117.0; // Longitud de Tijuana
-const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+//////////////////////////////////////////////
+//General data
+const apiKey = 'a2e0c89d04591e14058d6d687c73bf5b'; // API Key
+let latitude;
+let longitude;
+//////////////////////////////////////////////
+// Checking navegator compatibility and getting coord
+async function gettingCoordinates() {
+    return new Promise ((resolve, reject) => {
+        if ("geolocation" in navigator) {
+            // Getting user's location
+            navigator.geolocation.getCurrentPosition(function(position) {
+              // Getting coords
+            resolve({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude    
+            })   
+            }, reject);
+          } else {
+            reject(console.log("Geolocalización no es compatible en este navegador"));
+          }
+    })
+}
 
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
+//////////////////////////////////////////////
+// Getting weather Data from the API call
+async function gettingWeatherData() {
+    try {
+        const coordinate = await gettingCoordinates();
+        const url = await `https://api.openweathermap.org/data/2.5/weather?lat=${coordinate.latitude}&lon=${coordinate.longitude}&appid=${apiKey}`;
+        const response = await fetch(url);
+        const data = await response.json();
         const { name, main, weather } = data;
-        const temperatura = main.temp - 273.15; // Convertir de Kelvin a Celsius
-        const descripcion = weather[0].description;
+        const temperature = main.temp - 273.15; // K to C
+        const description = weather[0].description;
         const humidity = main.humidity;
         const pressure = main.pressure;
-        // <h2>Clima en ${name}</h2>, agregar despues dentro de "climaHTML"
-        const climaHTML = `
-            <p class= "temperature"> ${temperatura.toFixed(1)} °C </p>
-            <p class= "day_description"> ${descripcion}</p>
-            
-        `; //<p class= "humidity"> ${humidity}</p>
-        //<p class= "pressure"> ${pressure}</p> Agregar despues nuevamente
+        const climaHTML = `<p class= "temperature"> ${temperature.toFixed(1)} °C </p>
+        <p class= "day_description"> ${description}</p>`; 
         document.getElementById('weather').innerHTML = climaHTML;
-        return descripcion;
-    })
-    .then(descripcion => {
-        const weatherImg = document.querySelector(".weather-icon");
-        const dayOrNight = new Date();
-        const sunOrMoon = dayOrNight.getHours();
-        console.log(sunOrMoon);
+        document.getElementById('city_name').innerHTML = data.name;
+        return {
+            name,
+            temperature,
+            description,
+            humidity,
+            pressure
+        };
+    } catch (error) {
+        console.error('Error al obtener los datos del clima:', error);
+        return null; 
+    }
+}
 
-        
-        function sunOrMoonClear () {
-            if (sunOrMoon <=5 || sunOrMoon >= 20) {
-                weatherImg.src = "images/black_moon_night.png";
-            } else {
-                weatherImg.src = "images/sun_sunny.png";
-            }
-        }
-        function sunOrMoonCloudy () {
-            if (sunOrMoon <=5 || sunOrMoon >= 20) {
-                weatherImg.src = "images/cloudy_moon_night.png";
-            } else {
-                weatherImg.src = "images/cloudy_sunny.png";
-            }
-        }
-        function sunOrMoonCloudyRainy () {
-            if (sunOrMoon <=5 || sunOrMoon >= 20) {
-                weatherImg.src = "images/cloudy_moon_rainy.png";
-            } else {
-                weatherImg.src = "images/cloud_raining_sun.png";
-            }
-        }
-        function sunOrMoonIcon () {
-            switch (descripcion.toLowerCase()) {
-                //clear
-                case ("clear sky"):
-                    sunOrMoonClear();
-                    break;
-                //clouds
-                case ("few clouds"):
-                    sunOrMoonCloudy();
-                    break;
-                case ("scattered clouds"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/cloudy_weather.png";
-                    break;
-                case ("broken clouds"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/cloudy_weather.png";
-                    break;
-                case ("overcast clouds"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/cloudy_weather.png";
-                    break;
-    
-                //rain
-                case ("light rain"):
-                    sunOrMoonCloudyRainy();
-                    break;
-                case ("moderate rain"):
-                    sunOrMoonCloudyRainy();
-                    break;
-                case ("heavy intensity rain"):
-                    sunOrMoonCloudyRainy();
-                    break;
-                case ("very heavy rain"):
-                    sunOrMoonCloudyRainy();
-                    break;
-                case ("extreme rain"):
-                    sunOrMoonCloudyRainy();
-                    break;
-    
-                case ("freezing rain"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/freezing.png";
-                    break;
-                case ("light intensity shower rain"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/raining.png";
-                    break;
-                case ("shower rain"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/raining.png";
-                    break;
-                case ("heavy intensity shower rain"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/raining.png";
-                    break;
-                case ("ragged shower rain"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/raining.png";
-                    break;
-                //snow
-                case ("light snow"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/freezing.png";
-                    break;
-                case ("snow"):
-                    console.log(`${descripcion}`);
-                    weatherImg.src = "images/freezing.png";
-                    break;
-                default:
-                    console.log("case not recognized");
-                    weatherImg.src = "images/sun_sunny.png";
+//////////////////////////////////////////////
+// Prints the data received by the API call (temp)
+async function printData() {  
+    const theData = await gettingWeatherData();
+    if (theData) {
+        console.log(theData);
+        console.log(theData.name);
+    } else {
+        console.log('No se pudo obtener los datos del clima');
+    }
+}
+
+//////////////////////////////////////////////
+//Changes on the page depending on weather and time
+async function pageUpdates() { 
+    const theData = await gettingWeatherData();
+    const dayOrNight = new Date();
+    const sunOrMoon = dayOrNight.getHours();
+    console.log(sunOrMoon);
+
+    const weatherImages = {  //Day data
+        // Clear
+        "clear sky": ["images/sun_sunny.png", "images/black_moon_night.png"],
+        // Clouds
+        "few clouds": ["images/cloudy_sunny.png", "images/cloudy_moon_night.png"],
+        "scattered clouds": "images/cloudy_weather.png",
+        "broken clouds": "images/cloudy_weather.png",
+        "overcast clouds": "images/cloudy_weather.png",
+        // Rain
+        "light rain": ["images/cloud_raining_sun.png", "images/cloudy_moon_rainy.png"],
+        "moderate rain": ["images/cloud_raining_sun.png", "images/cloudy_moon_rainy.png"],
+        "heavy intensity rain": ["images/cloud_raining_sun.png", "images/cloudy_moon_rainy.png"],
+        "very heavy rain": ["images/cloud_raining_sun.png", "images/cloudy_moon_rainy.png"],
+        "extreme rain": ["images/cloud_raining_sun.png", "images/cloudy_moon_rainy.png"],
+        "freezing rain": "images/freezing.png",
+        "light intensity shower rain": "images/raining.png",
+        "shower rain": "images/raining.png",
+        "heavy intensity shower rain": "images/raining.png",
+        "ragged shower rain": "images/raining.png",
+        // Snow
+        "light snow": "images/freezing.png",
+        "snow": "images/freezing.png"
+    };
+    function getDayOrNightImage(images) { //Secondary function
+        if (Array.isArray(images)) {  //Check if its an array to decide which image to use
             
-                }
+            return sunOrMoon <= 5 || sunOrMoon >= 20 ? images[1] : images[0];
+            
         }
-        setInterval(sunOrMoonIcon, 60000);
-        sunOrMoonIcon();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        return images;
+    }
+    function sunOrMoonIcon() {  //Main function
+        const image = getDayOrNightImage(weatherImages[theData.description.toLowerCase()]);
+        const weatherImg = document.querySelector(".weather-icon");
+        if (image) {
+            weatherImg.src = image; //if there's an statement for the current weather, shows their image
+        } else {
+            console.log("case not recognized");
+            weatherImg.src = "images/sun_sunny.png";
+        }
+    }
+    sunOrMoonIcon();
 
+}
 
 ///////////////////////////////////////////////////////////
+//// Old code
 // Change button color and body background
 const btnNight = document.getElementById("night_mode");
 const mountains = document.querySelectorAll(".mountain1");
@@ -411,19 +397,18 @@ function checkTime() {
 }
 setInterval(checkTime, 60000);
 checkTime();
+//Old code ^^^^
+////
 
-// Verificar si el navegador es compatible con la geolocalización
-if ("geolocation" in navigator) {
-    // Obtener la ubicación del usuario
-    navigator.geolocation.getCurrentPosition(function(position) {
-      // Acceder a las coordenadas de la ubicación
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-      
-      // Utilizar las coordenadas como desees
-      console.log("Latitud: " + latitude + ", Longitud: " + longitude);
-    });
-  } else {
-    console.log("Geolocalización no es compatible en este navegador");
-  }
-  
+
+//Ejecuta todas las funciones cada 60 segundos (colocar esto al final para no llenar el script de asincronias)
+function globalWork() {
+    gettingCoordinates();
+    pageUpdates();
+    printData();
+}
+
+setInterval(globalWork, 60000);
+globalWork();
+
+
