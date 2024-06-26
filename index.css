@@ -11,7 +11,7 @@
 }
 /*****************/
 body {  /* 1 */      
-    height: 100vh;
+    height: 92vh;
     margin: 0;
     padding: 0;
     background-image: var(--gradient); 
@@ -97,9 +97,6 @@ body {  /* 1 */
                 transition: fill 1s ease; 
             }
 /*****************/
-    body {
-        height: 92vh;
-    }
     .content2 {  /* 2 */
         justify-content: space-between;
         margin-inline: auto;
@@ -154,26 +151,6 @@ body {  /* 1 */
         display: block;
         position: relative;
     }
-    .temperature {  /* 4 */
-        font-size: 150px;
-        padding-top: 30px;
-        text-align: center;
-        height: 250px;        
-        margin-top: 5px;
-        margin-block: 0px !important;
-    }
-    .day_description {  /* 4 */
-        height: 60px;
-        font-size: 50px;
-        text-align: center;
-        margin-top: 0px;
-
-    }
-    .wind_speed {
-        height: 32px;
-        font-size: 30px;
-
-    }
     .content { /* 2 */                            /* Temp, weather, mountains */                           
         min-height: 600px;
         height: 80%;
@@ -181,7 +158,27 @@ body {  /* 1 */
         border-radius: 20px;
         margin-inline: auto;
         margin-top: 150px;
-    }
+        }
+        .temperature {  /* 4 */
+            font-size: 150px;
+            padding-top: 30px;
+            text-align: center;
+            height: 250px;        
+            margin-top: 5px;
+            margin-block: 0px !important;
+        }
+        .day_description {  /* 4 */
+            height: 60px;
+            font-size: 50px;
+            text-align: center;
+            margin-top: 0px;
+
+        }
+        .wind_speed {
+            height: 32px;
+            font-size: 30px;
+
+        }
     .drawing { /* 3 */
         padding-left: 35%;
         height: 60%;
@@ -208,8 +205,8 @@ body {  /* 1 */
         height: auto;
 
     }
-    #city_name {
-        font-size: 30px;
-        padding-bottom: 10px;
-    }
+        #city_name {
+            font-size: 30px;
+            padding-bottom: 10px;
+        }
 }

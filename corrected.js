@@ -97,7 +97,51 @@ async function pageUpdates() {
         "ragged shower rain": "images/raining.png",
         // Snow
         "light snow": "images/freezing.png",
-        "snow": "images/freezing.png"
+        "snow": "images/freezing.png",
+        // Atmosphere all of them temporary but mist
+        "mist": "images/mist.png",
+        "smoke": "images/mist.png",
+        "haze": "images/mist.png",
+        "dust": "images/mist.png",
+        "fog": "images/mist.png",
+        "sand": "images/mist.png",
+        "dust": "images/mist.png",
+        "ash": "images/mist.png",
+        "squall": "images/mist.png",
+        "tornado": "images/mist.png",
+        // snow (some temp too)
+        "light snow": "images/light_snow.png",
+        "snow": "images/mid_snow",
+        "heavy snow": "images/freezing.png",
+        "sleet": "images/light_snow.png",
+        "light shower sleet": "images/light_snow.png",
+        "shower sleet": "images/light_snow.png",
+        "light rain and snow": "images/light_snow.png",
+        "rain and snow": "images/light_snow.png",
+        "light shower snow": "images/light_snow.png",
+        "shower snow": "images/mid_snow.png",
+        "heavy shower snow": "images/freezing.png",
+        // drizzle
+        "light intensity drizzle": "images/raining.png",
+        "drizzle": "images/raining.png",
+        "heavy intensity drizzle": "images/raining.png",
+        "light intensity drizzle rain": "images/raining.png",
+        "drizzle rain": "images/raining.png",
+        "heavy intensity drizzle rain": "images/raining.png",
+        "shower rain and drizzle": "images/raining.png",
+        "heavy shower rain and drizzle": "images/raining.png",
+        "shower drizzle": "images/raining.png",
+        //Thunderstom
+        "thunderstorm with light rain": "images/thunderstorm.png",
+        "thunderstorm with rain": "images/thunderstorm.png",
+        "thunderstorm with heavy rain": "images/thunderstorm.png",
+        "light thunderstorm": "images/thunderstorm.png",
+        "thunderstorm": "images/thunderstorm.png",
+        "heavy thunderstorm": "images/thunderstorm.png",
+        "ragged thunderstorm": "images/thunderstorm.png",
+        "thunderstorm with light drizzle": "images/thunderstorm.png",
+        "thunderstorm with drizzle": "images/thunderstorm.png",
+        "thunderstorm with heavy drizzle": "images/thunderstorm.png"    
     };
     function getDayOrNightImage(images) { //Secondary function
         if (Array.isArray(images)) {  //Check if its an array to decide which image to use
