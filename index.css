@@ -163,13 +163,16 @@ body {  /* 1 */
         margin-block: 0px !important;
     }
     .day_description {  /* 4 */
-        height: 100px;
+        height: 70px;
         font-size: 50px;
         text-align: center;
         margin-top: 0px;
+
     }
     .wind_speed {
-        font-size: 35px;
+        height: 40px;
+        font-size: 30px;
+
     }
     .content { /* 2 */                            /* Temp, weather, mountains */                           
         min-height: 600px;
@@ -206,5 +209,6 @@ body {  /* 1 */
     }
     #city_name {
         font-size: 30px;
+        padding-bottom: 10px;
     }
 }
