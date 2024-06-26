@@ -163,14 +163,14 @@ body {  /* 1 */
         margin-block: 0px !important;
     }
     .day_description {  /* 4 */
-        height: 70px;
+        height: 60px;
         font-size: 50px;
         text-align: center;
         margin-top: 0px;
 
     }
     .wind_speed {
-        height: 40px;
+        height: 32px;
         font-size: 30px;
 
     }
@@ -201,11 +201,12 @@ body {  /* 1 */
         }
     .content2 {  /* 2 */
         position: absolute;
-        bottom: 0;
-        width: 100%;
+        bottom: -100px;
+        width: 97%;
         justify-content: space-between;
         margin-inline: auto;
         height: auto;
+
     }
     #city_name {
         font-size: 30px;
