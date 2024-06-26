@@ -30,13 +30,17 @@ async function gettingWeatherData() {
         const url = await `https://api.openweathermap.org/data/2.5/weather?lat=${coordinate.latitude}&lon=${coordinate.longitude}&appid=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
-        const { name, main, weather } = data;
+        const { name, main, weather, wind } = data;
         const temperature = main.temp - 273.15; // K to C
         const description = weather[0].description;
         const humidity = main.humidity;
         const pressure = main.pressure;
-        const climaHTML = `<p class= "temperature"> ${temperature.toFixed(1)} °C </p>
-        <p class= "day_description"> ${description}</p>`; 
+        const windSpeed = wind.speed;
+        const climaHTML = `
+        <p class= "temperature"> ${temperature.toFixed(1)} °C </p>
+        <p class= "day_description"> ${description}</p>
+        <p class= "wind_speed"> wind speed: ${windSpeed} m/s</p>
+        `; 
         document.getElementById('weather').innerHTML = climaHTML;
         document.getElementById('city_name').innerHTML = data.name;
         return {
@@ -156,11 +160,6 @@ function totalDark() {  // 0%
     windows.forEach(element => {
         element.style.fill = 'rgb(190, 185, 185)';
     });
-
-    github.src = "social_icons/github_icon2.png";
-    gmail.src = "social_icons/gmail_icon2.png";
-    whatsapp.src = "social_icons/whatsapp_icon2.png";
-    personal_page.src = "social_icons/fox_icon2.png";
 };
 
 //10%
@@ -180,10 +179,6 @@ function Dark10p() {  // 10%
         element.style.fill = 'rgb(181, 177, 177)';
     });
 
-    github.src = "social_icons/github_icon2.png";
-    gmail.src = "social_icons/gmail_icon2.png";
-    whatsapp.src = "social_icons/whatsapp_icon2.png";
-    personal_page.src = "social_icons/fox_icon2.png";
 };
 //30%
 function Dark30p() {  //30%
@@ -201,11 +196,6 @@ function Dark30p() {  //30%
     windows.forEach(element => {
         element.style.fill = 'rgb(162, 157, 157)';
     });
-
-    github.src = "social_icons/github_icon2.png";
-    gmail.src = "social_icons/gmail_icon2.png";
-    whatsapp.src = "social_icons/whatsapp_icon2.png";
-    personal_page.src = "social_icons/fox_icon2.png";
 }
 //50%
 function Dark50p() {  //50%
@@ -223,11 +213,6 @@ function Dark50p() {  //50%
     windows.forEach(element => {
         element.style.fill = 'rgb(145, 142, 142)';
     });
-
-    github.src = "social_icons/github_icon2.png";
-    gmail.src = "social_icons/gmail_icon2.png";
-    whatsapp.src = "social_icons/whatsapp_icon2.png";
-    personal_page.src = "social_icons/fox_icon2.png";
 }
 //70%
 function Dark70p() {  //70%
@@ -245,11 +230,6 @@ function Dark70p() {  //70%
     windows.forEach(element => {
         element.style.fill = 'rgb(126, 122, 122)';
     });
-    
-    github.src = "social_icons/github_icon.png";
-    gmail.src = "social_icons/gmail_icon.png";
-    whatsapp.src = "social_icons/whatsapp_icon.png";
-    personal_page.src = "social_icons/fox_icon.png";
 }
 //90%
 function Dark90p() {  //90%
@@ -267,11 +247,6 @@ function Dark90p() {  //90%
     windows.forEach(element => {
         element.style.fill = 'rgb(109, 106, 106)';
     });
-
-    github.src = "social_icons/github_icon.png";
-    gmail.src = "social_icons/gmail_icon.png";
-    whatsapp.src = "social_icons/whatsapp_icon.png";
-    personal_page.src = "social_icons/fox_icon.png";
 }
 
 function day() {  //100%
@@ -288,17 +263,11 @@ function day() {  //100%
         building7.setAttribute('style', 'fill: rgb(137, 156, 191);');
         windows.forEach(element => {
             element.style.fill = 'rgb(101, 136, 131)';
-        });
-
-        github.src = "social_icons/github_icon.png";
-        gmail.src = "social_icons/gmail_icon.png";
-        whatsapp.src = "social_icons/whatsapp_icon.png";
-        personal_page.src = "social_icons/fox_icon.png";    
+        });   
 }
 
 //// Old code ^^^
 // Managing events each hour
-//// Getting current hour
 function checkTime() {
     const date = new Date();
     const hour = date.getHours();
@@ -350,5 +319,3 @@ function globalWork() {
 }
 setInterval(globalWork, 60000);
 globalWork();
-
-

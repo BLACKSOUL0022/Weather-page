@@ -39,9 +39,17 @@ body {  /* 1 */
                 margin-block: 0px !important;
             }
             .day_description {  /* 4 */
-                height: 50%;
+                height: 20%;
                 font-size: 30px;
                 text-align: center;
+                margin-block: 0px !important;
+            }
+            .wind_speed {
+                height: 30%;
+                width: 100%;
+                margin-block: 0px !important;
+                display: flex;
+                justify-content: center;
             }
 /*****************/
         #sun {  /* 3 */
@@ -151,6 +159,7 @@ body {  /* 1 */
         padding-top: 30px;
         text-align: center;
         height: 250px;        
+        margin-top: 5px;
         margin-block: 0px !important;
     }
     .day_description {  /* 4 */
