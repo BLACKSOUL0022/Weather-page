@@ -119,7 +119,6 @@ async function pageUpdates() {
 
 ///////////////////////////////////////////////////////////
 //// Old code
-// Change button color and body background
 const github = document.getElementById("github");
 const gmail = document.getElementById("gmail");
 const whatsapp = document.getElementById("whatsapp");
@@ -296,151 +295,59 @@ function day() {  //100%
         whatsapp.src = "social_icons/whatsapp_icon.png";
         personal_page.src = "social_icons/fox_icon.png";    
 }
-// Managing events each hour
 
+//// Old code ^^^
+// Managing events each hour
 //// Getting current hour
 function checkTime() {
     const date = new Date();
     const hour = date.getHours();
-    switch (hour) {
-    
-        case 0:
-            console.log("son las 12 AM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-        case 1:
-            console.log("es la 1 AM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-        case 2:
-            console.log("son las 2 AM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-        case 3:
-            console.log("son las 3 AM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-        case 4:
-            console.log("son las 4 AM");
-            document.body.style.backgroundPosition = '50% 10%';
-            Dark10p();
-            break;
-        case 5:
-            console.log("son las 5 AM");
-            document.body.style.backgroundPosition = '50% 30%';
-            Dark30p();
-            break;
-        case 6:
-            console.log("son las 6 AM");
-            document.body.style.backgroundPosition = '50% 50%';
-            Dark50p();
-            break;
-        case 7:
-            console.log("son las 7 AM");
-            document.body.style.backgroundPosition = '50% 70%';
-            Dark70p();
-            break;
-        case 8:
-            console.log("son las 8 AM");
-            document.body.style.backgroundPosition = '50% 90%';
-            Dark90p();
-            break;
-        case 9:
-            console.log("son las 9 AM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 10:
-            console.log("son las 10 AM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 11:
-            console.log("son las 11 AM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 12:
-            console.log("son las 12 PM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 13:
-            console.log("es la 1 PM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 14:
-            console.log("son las 2 PM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 15:
-            console.log("son las 3 PM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 16:
-            console.log("son las 4 PM");
-            document.body.style.backgroundPosition = '50% 100%';
-            day();
-            break;
-        case 17:
-            console.log("son las 5 PM");
-            document.body.style.backgroundPosition = '50% 90%';
-            Dark90p();
-            break;
-        case 18:
-            console.log("son las 6 PM");
-            document.body.style.backgroundPosition = '50% 70%';
-            Dark70p();
-            break;
-        case 19:
-            console.log("son las 7 PM");
-            document.body.style.backgroundPosition = '50% 50%';
-            Dark50p();
-            break;
-        case 20:
-            console.log("son las 8 PM");
-            document.body.style.backgroundPosition = '50% 30%';
-            Dark30p();
-            break;
-        case 21:
-            console.log("son las 9 PM"); 
-            document.body.style.backgroundPosition = '50% 10%';
-            Dark10p();
-            break;
-        case 22:
-            console.log("son las 10 PM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-        case 23:
-            console.log("son las 11 PM");
-            document.body.style.backgroundPosition = '50% 0%';
-            totalDark();
-            break;
-            default:
-                console.log(`la hora actual es: ${hour}`);
-        }        
-}
-setInterval(checkTime, 60000);
-checkTime();
-//Old code ^^^^
-////
+    console.log(hour);
 
+    if ((hour >= 0 && hour < 4) || (hour > 21 && hour < 24)) {
+        document.body.style.backgroundPosition = '50% 0%';    // change 0
+        totalDark();
+    } else {
+        switch (hour) {
+            case 4:
+            case 21:
+                document.body.style.backgroundPosition = '50% 10%';    // change 1
+                Dark10p();
+                break;
+            case 5:
+            case 20:
+                document.body.style.backgroundPosition = '50% 30%';    // change 2
+                Dark30p();
+                break;
+            case 6:
+            case 19:
+                document.body.style.backgroundPosition = '50% 50%';    // change 3
+                Dark50p();
+                break;
+            case 7:
+            case 18:
+                document.body.style.backgroundPosition = '50% 70%';    // change 4
+                Dark70p();
+                break;
+            case 8:
+            case 17:
+                document.body.style.backgroundPosition = '50% 90%';    // change 5
+                Dark90p();
+                break;
+            default:
+                document.body.style.backgroundPosition = '50% 100%';   // change 6
+                day();
+        }
+    }
+}
 
 //Ejecuta todas las funciones cada 60 segundos (colocar esto al final para no llenar el script de asincronias)
 function globalWork() {
     gettingCoordinates();
     pageUpdates();
     printData();
+    checkTime();
 }
-
 setInterval(globalWork, 60000);
 globalWork();
 
