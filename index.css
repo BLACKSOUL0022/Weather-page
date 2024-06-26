@@ -164,9 +164,12 @@ body {  /* 1 */
     }
     .day_description {  /* 4 */
         height: 100px;
-        font-size: 40px;
+        font-size: 70px;
         text-align: center;
         margin-top: 0px;
+    }
+    .wind_speed {
+        font-size: 60px;
     }
     .content { /* 2 */                            /* Temp, weather, mountains */                           
         min-height: 600px;
@@ -200,5 +203,8 @@ body {  /* 1 */
         justify-content: space-between;
         margin-inline: auto;
         height: auto;
+    }
+    #city_name {
+        font-size: 50px;
     }
 }
